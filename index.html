@@ -5,21 +5,99 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>My Stock News — Demo</title>
   <style>
-    body{font-family:system-ui,Arial;max-width:900px;margin:28px auto;padding:12px}
-    header{border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:12px}
-    .card{background:#fff;padding:12px;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,0.04)}
+    body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #f6f7fb;
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3 { margin:0 0 12px 0; }
+p { line-height:1.5; }
+
+section, aside {
+  background:white;
+  border-radius:8px;
+  padding:12px;
+  box-shadow:0 1px 6px rgba(0,0,0,0.06);
+}
+
+#news-list .news-item {
+  border-bottom:1px solid #eef;
+  padding:10px 0;
+}
+
+#news-list .news-item:last-child { border-bottom:none; }
+
+@media(max-width:840px) {
+  main { grid-template-columns:1fr; }
+}
   </style>
 </head>
 <body>
-  <header>
-    <h1>My Stock News (Demo)</h1>
-    <p>Manual posts + auto-updated headlines (we'll add automation later)</p>
+  <header style="background:#0b1220;color:white;padding:16px;text-align:center;">
+    <h1>My Stock News</h1>
+    <p style="opacity:0.8;font-size:14px;">Manual posts + live stock tickers</p>
   </header>
 
-  <main class="card">
-    <h2>Welcome 👋</h2>
-<p>My first GitHub Pages site is live! I can edit it locally now.</p>
-    <div id="news">Latest news will appear here after we add the news feed.</div>
+  <main style="display:grid;grid-template-columns:1fr 350px;gap:20px;max-width:1000px;margin:20px auto;padding:0 12px;">
+    <!-- Main News Section -->
+    <section style="background:white;border-radius:8px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+      <h2>Latest News</h2>
+      <div id="news-list">
+        <p style="color:#777">Loading news...</p>
+      </div>
+    </section>
+
+    <!-- Sidebar / Tickers -->
+    <aside style="background:white;border-radius:8px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+      <h3>Live Stock Tickers</h3>
+      <div id="tickers-widget">
+        <!-- TradingView widget will go here -->
+    
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">Ticker tape</span></a><span class="trademark"> by TradingView</span></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    },
+    {
+      "proName": "OANDA:XAUUSD",
+      "title": "Gold"
+    },
+    {
+      "proName": "TVC:VIX",
+      "title": "Volatility Index"
+    }
+  ],
+  "colorTheme": "dark",
+  "locale": "en",
+  "largeChartUrl": "",
+  "isTransparent": false,
+  "showSymbolLogo": true,
+  "displayMode": "adaptive"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->     
+      </div>
+    </aside>
   </main>
 </body>
 </html>
