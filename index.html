@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Stock News — Demo</title>
+  <title>Stockrows - Market News</title>
   <style>
     body {
       font-family: system-ui, Arial, sans-serif;
@@ -14,6 +14,15 @@
 
     h1,h2,h3 { margin:0 0 12px 0; }
     p { line-height:1.5; }
+
+    header {
+      background:#0b1220;
+      color:white;
+      padding:16px 12px;
+      text-align:center;
+      font-size:1.5em;
+      font-weight:bold;
+    }
 
     /* Widget container */
     #widget-container {
@@ -27,41 +36,84 @@
       max-width:1000px;
       margin:20px auto;
       padding:0 12px;
-    }
-
-    /* Article links section */
-    #article-links {
-      background:white;
-      border-radius:8px;
-      padding:12px;
-      box-shadow:0 1px 6px rgba(0,0,0,0.06);
-      margin-bottom:20px;
-    }
-
-    #article-links ul {
-      list-style:none;
-      padding-left:0;
       display:flex;
       gap:20px;
     }
 
-    #article-links a {
+    /* Sidebar for Analysis Articles */
+    #sidebar {
+      flex:0 0 220px;
+      background:white;
+      border-radius:8px;
+      padding:12px;
+      box-shadow:0 1px 6px rgba(0,0,0,0.06);
+      height:max-content;
+    }
+
+    #sidebar ul {
+      list-style:none;
+      padding-left:0;
+    }
+
+    #sidebar a {
+      text-decoration:none;
+      color:#0b1220;
+      font-weight:bold;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    #sidebar a:hover {
+      color:#0077cc;
+    }
+
+    /* Main content area */
+    #content {
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    /* Posts section */
+    #posts {
+      background:white;
+      border-radius:8px;
+      padding:12px;
+      box-shadow:0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    #posts img {
+      width:100%;
+      border-radius:6px;
+      margin-bottom:10px;
+    }
+
+    #posts ul {
+      list-style:none;
+      padding-left:0;
+    }
+
+    #posts li {
+      margin-bottom:10px;
+    }
+
+    #posts a {
       text-decoration:none;
       color:#0b1220;
       font-weight:bold;
     }
 
-    #article-links a:hover {
+    #posts a:hover {
       color:#0077cc;
     }
 
-    /* News feed section */
+    /* News feed section at bottom */
     #news-feed {
       background:white;
       border-radius:8px;
       padding:12px;
       box-shadow:0 1px 6px rgba(0,0,0,0.06);
-      margin-top:40px;
     }
 
     #news-feed ul {
@@ -79,13 +131,18 @@
     }
 
     @media(max-width:840px) {
-      #article-links ul {
+      main {
         flex-direction:column;
+      }
+      #sidebar {
+        width:100%;
       }
     }
   </style>
 </head>
 <body>
+  <header>Stockrows - Market News</header>
+
   <!-- TradingView widget on top, full width -->
   <div id="widget-container">
     <div class="tradingview-widget-container" title="Live Stock Ticker Tape">
@@ -117,30 +174,48 @@
   </div>
 
   <main>
-    <!-- Article links to PDFs -->
-    <div id="article-links">
+    <!-- Sidebar for Analysis Articles -->
+    <div id="sidebar">
       <h2>Analysis Articles</h2>
       <ul>
-        <li><a href="analysis1.pdf" target="_blank">Analysis 1</a></li>
-        <li><a href="analysis2.pdf" target="_blank">Analysis 2</a></li>
-        <li><a href="analysis3.pdf" target="_blank">Analysis 3</a></li>
+        <li><a href="https://www.investopedia.com/articles/stocks/09/stock-analysis.asp" target="_blank">How to Analyze Stocks</a></li>
+        <li><a href="https://www.marketwatch.com/story/top-stocks-to-watch-this-week-11672051711" target="_blank">Top Stocks to Watch</a></li>
+        <li><a href="https://www.fool.com/investing/how-to-invest/stocks/" target="_blank">Stock Investing Tips</a></li>
       </ul>
     </div>
 
-    <!-- Manual news feed at the bottom -->
-    <section id="news-feed">
-      <h2>Latest News</h2>
-      <ul>
-        <li>
-          <a href="https://www.example.com/news1" target="_blank">Apple Reports Record Quarterly Earnings</a>
-          <p style="font-size:0.9em;color:#555;">Apple’s Q2 earnings exceeded expectations, with strong iPhone sales.</p>
-        </li>
-        <li>
-          <a href="https://www.example.com/news2" target="_blank">Tesla Stock Rises After New Model Announcement</a>
-          <p style="font-size:0.9em;color:#555;">Tesla announces new electric vehicle lineup, causing stock surge.</p>
-        </li>
-      </ul>
-    </section>
+    <!-- Main content -->
+    <div id="content">
+      <!-- Posts section -->
+      <div id="posts">
+        <h2>Posts</h2>
+        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhfHxzdG9ja3xlbnwwfHx8fDE2OTUwOTk4NzM&ixlib=rb-4.0.3&q=80&w=800" alt="Stock Market">
+        <ul>
+          <li><a href="https://www.cnbc.com/finance/" target="_blank">Market Recap: What Moved Stocks Today</a></li>
+          <li><a href="https://www.bloomberg.com/markets" target="_blank">Global Markets Overview</a></li>
+          <li><a href="https://www.reuters.com/finance/markets" target="_blank">Breaking Market News</a></li>
+        </ul>
+      </div>
+
+      <!-- Latest News at bottom -->
+      <section id="news-feed">
+        <h2>Latest News</h2>
+        <ul>
+          <li>
+            <a href="https://www.cnbc.com/2025/09/21/apple-q3-earnings.html" target="_blank">Apple Reports Record Quarterly Earnings</a>
+            <p style="font-size:0.9em;color:#555;">Apple’s Q2 earnings exceeded expectations, driven by iPhone and services growth.</p>
+          </li>
+          <li>
+            <a href="https://www.cnbc.com/2025/09/21/tesla-stock-surges.html" target="_blank">Tesla Stock Rises After New Model Announcement</a>
+            <p style="font-size:0.9em;color:#555;">Tesla announces new electric vehicle lineup, causing stock surge.</p>
+          </li>
+          <li>
+            <a href="https://www.bloomberg.com/news/articles/2025-09-21/global-markets-today" target="_blank">Global Markets Update</a>
+            <p style="font-size:0.9em;color:#555;">Markets fluctuate amid economic data releases and central bank updates.</p>
+          </li>
+        </ul>
+      </section>
+    </div>
   </main>
 </body>
 </html>
