@@ -15,74 +15,132 @@
     h1,h2,h3 { margin:0 0 12px 0; }
     p { line-height:1.5; }
 
-    section, aside {
+    /* Widget container */
+    #widget-container {
+      width: 100%;
+      background:white;
+      padding:12px 0;
+      box-shadow:0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    main {
+      max-width:1000px;
+      margin:20px auto;
+      padding:0 12px;
+    }
+
+    /* Article links section */
+    #article-links {
       background:white;
       border-radius:8px;
       padding:12px;
       box-shadow:0 1px 6px rgba(0,0,0,0.06);
+      margin-bottom:20px;
     }
 
-    #news-list .news-item {
+    #article-links ul {
+      list-style:none;
+      padding-left:0;
+      display:flex;
+      gap:20px;
+    }
+
+    #article-links a {
+      text-decoration:none;
+      color:#0b1220;
+      font-weight:bold;
+    }
+
+    #article-links a:hover {
+      color:#0077cc;
+    }
+
+    /* News feed section */
+    #news-feed {
+      background:white;
+      border-radius:8px;
+      padding:12px;
+      box-shadow:0 1px 6px rgba(0,0,0,0.06);
+      margin-top:40px;
+    }
+
+    #news-feed ul {
+      list-style:none;
+      padding-left:0;
+    }
+
+    #news-feed li {
       border-bottom:1px solid #eef;
       padding:10px 0;
     }
 
-    #news-list .news-item:last-child { border-bottom:none; }
+    #news-feed li:last-child {
+      border-bottom:none;
+    }
 
     @media(max-width:840px) {
-      main { grid-template-columns:1fr; }
+      #article-links ul {
+        flex-direction:column;
+      }
     }
   </style>
 </head>
 <body>
-  <header style="background:#0b1220;color:white;padding:16px;text-align:center;">
-    <h1>My Stock News</h1>
-    <p style="opacity:0.8;font-size:14px;">Manual posts + live stock tickers</p>
-  </header>
+  <!-- TradingView widget on top, full width -->
+  <div id="widget-container">
+    <div class="tradingview-widget-container" title="Live Stock Ticker Tape">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">
+          <span class="blue-text">Ticker tape</span>
+        </a>
+        <span class="trademark"> by TradingView</span>
+      </div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
+          { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
+          { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+          { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
+          { "proName": "OANDA:XAUUSD", "title": "Gold" }
+        ],
+        "colorTheme": "dark",
+        "locale": "en",
+        "largeChartUrl": "",
+        "isTransparent": false,
+        "showSymbolLogo": true,
+        "displayMode": "adaptive"
+      }
+      </script>
+    </div>
+  </div>
 
-  <main style="display:grid;grid-template-columns:1fr 350px;gap:20px;max-width:1000px;margin:20px auto;padding:0 12px;">
-    <!-- Main News Section -->
-    <section style="background:white;border-radius:8px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+  <main>
+    <!-- Article links to PDFs -->
+    <div id="article-links">
+      <h2>Analysis Articles</h2>
+      <ul>
+        <li><a href="analysis1.pdf" target="_blank">Analysis 1</a></li>
+        <li><a href="analysis2.pdf" target="_blank">Analysis 2</a></li>
+        <li><a href="analysis3.pdf" target="_blank">Analysis 3</a></li>
+      </ul>
+    </div>
+
+    <!-- Manual news feed at the bottom -->
+    <section id="news-feed">
       <h2>Latest News</h2>
-      <div id="news-list">
-        <p style="color:#777">Loading news...</p>
-      </div>
+      <ul>
+        <li>
+          <a href="https://www.example.com/news1" target="_blank">Apple Reports Record Quarterly Earnings</a>
+          <p style="font-size:0.9em;color:#555;">Apple’s Q2 earnings exceeded expectations, with strong iPhone sales.</p>
+        </li>
+        <li>
+          <a href="https://www.example.com/news2" target="_blank">Tesla Stock Rises After New Model Announcement</a>
+          <p style="font-size:0.9em;color:#555;">Tesla announces new electric vehicle lineup, causing stock surge.</p>
+        </li>
+      </ul>
     </section>
-
-    <!-- Sidebar / Tickers -->
-    <aside style="background:white;border-radius:8px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
-      <h3>Live Stock Tickers</h3>
-      <div id="tickers-widget">
-        <!-- TradingView Widget -->
-        <div class="tradingview-widget-container" title="Live Stock Ticker Tape">
-          <div class="tradingview-widget-container__widget"></div>
-          <div class="tradingview-widget-copyright">
-            <a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">
-              <span class="blue-text">Ticker tape</span>
-            </a>
-            <span class="trademark"> by TradingView</span>
-          </div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-          {
-            "symbols": [
-              { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
-              { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
-              { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-              { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
-              { "proName": "OANDA:XAUUSD", "title": "Gold" },
-            ],
-            "colorTheme": "dark",
-            "locale": "en",
-            "largeChartUrl": "",
-            "isTransparent": false,
-            "showSymbolLogo": true,
-            "displayMode": "adaptive"
-          }
-          </script>
-        </div>
-        <!-- TradingView Widget END -->
-      </div>
-    </aside>
   </main>
 </body>
 </html>
