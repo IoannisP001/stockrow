@@ -6,32 +6,32 @@
   <title>My Stock News — Demo</title>
   <style>
     body {
-  font-family: system-ui, Arial, sans-serif;
-  background: #f6f7fb;
-  margin: 0;
-  padding: 0;
-}
+      font-family: system-ui, Arial, sans-serif;
+      background: #f6f7fb;
+      margin: 0;
+      padding: 0;
+    }
 
-h1,h2,h3 { margin:0 0 12px 0; }
-p { line-height:1.5; }
+    h1,h2,h3 { margin:0 0 12px 0; }
+    p { line-height:1.5; }
 
-section, aside {
-  background:white;
-  border-radius:8px;
-  padding:12px;
-  box-shadow:0 1px 6px rgba(0,0,0,0.06);
-}
+    section, aside {
+      background:white;
+      border-radius:8px;
+      padding:12px;
+      box-shadow:0 1px 6px rgba(0,0,0,0.06);
+    }
 
-#news-list .news-item {
-  border-bottom:1px solid #eef;
-  padding:10px 0;
-}
+    #news-list .news-item {
+      border-bottom:1px solid #eef;
+      padding:10px 0;
+    }
 
-#news-list .news-item:last-child { border-bottom:none; }
+    #news-list .news-item:last-child { border-bottom:none; }
 
-@media(max-width:840px) {
-  main { grid-template-columns:1fr; }
-}
+    @media(max-width:840px) {
+      main { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
@@ -53,49 +53,35 @@ section, aside {
     <aside style="background:white;border-radius:8px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
       <h3>Live Stock Tickers</h3>
       <div id="tickers-widget">
-        <!-- TradingView widget will go here -->
-    
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">Ticker tape</span></a><span class="trademark"> by TradingView</span></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {
-      "proName": "FOREXCOM:SPXUSD",
-      "title": "S&P 500 Index"
-    },
-    {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR to USD"
-    },
-    {
-      "proName": "BITSTAMP:BTCUSD",
-      "title": "Bitcoin"
-    },
-    {
-      "proName": "BITSTAMP:ETHUSD",
-      "title": "Ethereum"
-    },
-    {
-      "proName": "OANDA:XAUUSD",
-      "title": "Gold"
-    },
-    {
-      "proName": "TVC:VIX",
-      "title": "Volatility Index"
-    }
-  ],
-  "colorTheme": "dark",
-  "locale": "en",
-  "largeChartUrl": "",
-  "isTransparent": false,
-  "showSymbolLogo": true,
-  "displayMode": "adaptive"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->     
+        <!-- TradingView Widget -->
+        <div class="tradingview-widget-container" title="Live Stock Ticker Tape">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+            <a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">
+              <span class="blue-text">Ticker tape</span>
+            </a>
+            <span class="trademark"> by TradingView</span>
+          </div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+          {
+            "symbols": [
+              { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
+              { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
+              { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+              { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
+              { "proName": "OANDA:XAUUSD", "title": "Gold" },
+              { "proName": "TVC:VIX", "title": "Volatility Index" }
+            ],
+            "colorTheme": "dark",
+            "locale": "en",
+            "largeChartUrl": "",
+            "isTransparent": false,
+            "showSymbolLogo": true,
+            "displayMode": "adaptive"
+          }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
       </div>
     </aside>
   </main>
